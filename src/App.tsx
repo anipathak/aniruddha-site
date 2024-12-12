@@ -61,7 +61,7 @@ const Portfolio = () => {
           <div className="relative">
             <div className="absolute -inset-2 bg-purple-400 rounded-full opacity-75 blur-xl pb-10 animate-pulse"></div>
             <img
-              src="src/assets/ani-cat.jpeg"
+              src="src/ani-cat.jpeg"
               alt="Aniruddha Pathak"
               className="relative mx-auto w-64 h-64 object-cover rounded-full border-4 border-white shadow-lg"
             />
