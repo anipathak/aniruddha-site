@@ -1,19 +1,30 @@
-import { useState, useRef } from "react";
+import { useState, useRef, MutableRefObject } from "react";
 import { Home, User, Briefcase, Code, Award, Mail } from "lucide-react";
 import ContactSection from "./ContactSection";
 
+type SectionName =
+  | "home"
+  | "about"
+  | "experience"
+  | "projects"
+  | "skills"
+  | "contact";
+
 const Portfolio = () => {
-  const [activeSection, setActiveSection] = useState("home");
-  const sectionsRef = {
-    home: useRef(null),
-    about: useRef(null),
-    experience: useRef(null),
-    projects: useRef(null),
-    skills: useRef(null),
-    contact: useRef(null),
+  const [activeSection, setActiveSection] = useState<SectionName>("home");
+  const sectionsRef: Record<
+    SectionName,
+    MutableRefObject<HTMLDivElement | null>
+  > = {
+    home: useRef<HTMLDivElement>(null),
+    about: useRef<HTMLDivElement>(null),
+    experience: useRef<HTMLDivElement>(null),
+    projects: useRef<HTMLDivElement>(null),
+    skills: useRef<HTMLDivElement>(null),
+    contact: useRef<HTMLDivElement>(null),
   };
 
-  const scrollToSection = (sectionName: string) => {
+  const scrollToSection = (sectionName: SectionName) => {
     sectionsRef[sectionName].current?.scrollIntoView({ behavior: "smooth" });
     setActiveSection(sectionName);
   };
@@ -37,7 +48,7 @@ const Portfolio = () => {
             ].map(({ name, icon: Icon }) => (
               <button
                 key={name}
-                onClick={() => scrollToSection(name)}
+                onClick={() => scrollToSection(name as SectionName)}
                 className={`flex items-center space-x-2 px-3 py-2 rounded-full transition-all duration-300 ${
                   activeSection === name
                     ? "bg-purple-600 text-white"
