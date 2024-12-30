@@ -1,6 +1,3 @@
-// Ensure you have installed emailjs-com by running:
-// npm install emailjs-com
-
 import React, { useRef } from "react";
 import emailjs from "emailjs-com";
 
@@ -33,7 +30,6 @@ const ContactSection: React.FC<ContactSectionProps> = ({ sectionsRef }) => {
           }
         );
 
-      // Optionally clear the form
       e.currentTarget.reset();
     }
   };
